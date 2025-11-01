@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 
-def f_dynamics(t, x_n, xdot_n):
+def f_dynamics(tk, xk, xdotk):
     """SMD dynamics"""
     m = 1
     
@@ -12,14 +12,14 @@ def f_dynamics(t, x_n, xdot_n):
     
     F = 0
     
-    return (1/m) * ( -k*x_n - b*xdot_n + F )
+    return (1/m) * ( -k*xk - b*xdotk + F )
 
 
 def forward_euler():
     
     # initial conditions
-    x_n = 1
-    xdot_n = 0
+    xk = 1
+    xdotk = 0
     
     # time
     dt = 0.001
@@ -31,21 +31,21 @@ def forward_euler():
     x_data = np.zeros_like(t_data)
     xdot_data = np.zeros_like(t_data)
     
-    for t in t_data:
+    for tk in t_data:
         
-        xddot_n = f_dynamics(t, x_n, xdot_n)
+        xddotk = f_dynamics(tk, xk, xdotk)
         
-        xdot_n1 = xdot_n + dt * xddot_n
+        xdotk1 = xdotk + dt * xddotk
 
-        x_n1 = x_n + dt * xdot_n
+        xk1 = xk + dt * xdotk
         
-        x_n = x_n1
-        xdot_n = xdot_n1
+        xk = xk1
+        xdotk = xdotk1
         
 
         # add data for plotting
-        x_data[k] = x_n
-        xdot_data[k] = xdot_n
+        x_data[k] = xk
+        xdot_data[k] = xdotk
         k += 1
         
 
@@ -80,7 +80,7 @@ def plot(t_data, x_data, xdot_data):
 
 
 
-if __name__ == "__main__":
+if _kame__ == "__main__":
     forward_euler()
 
 
