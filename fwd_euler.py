@@ -69,7 +69,7 @@ def plot(t_data, x_data, xdot_data):
     plt.grid()
     
     plt.suptitle("fwd euler integration")
-    plt.savefig("fwd_euler.pdf")
+    plt.savefig("plots/fwd_euler.pdf")
     plt.close()
     
         
